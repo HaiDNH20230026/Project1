@@ -121,9 +121,9 @@ CREATE DATABASE calendar_app;
 
 ### 3. Cài đặt Backend (Spring Boot)
 
-Clone repository và di chuyển vào thư mục backend.
+- Clone repository và di chuyển vào thư mục backend.
 
-Cấu hình file src/main/resources/application.properties:
+- Cấu hình file src/main/resources/application.properties:
 # Database Config
 spring.datasource.url=jdbc:mysql://localhost:3306/calendar_app
 spring.datasource.username=YOUR_DB_USERNAME
@@ -139,21 +139,20 @@ gemini.api.key=YOUR_GEMINI_API_KEY
 spring.security.oauth2.client.registration.google.client-id=YOUR_GOOGLE_CLIENT_ID
 spring.security.oauth2.client.registration.google.client-secret=YOUR_GOOGLE_CLIENT_SECRET
 
-Chạy Backend:
+- Chạy Backend:
 ./gradlew bootRun
-Backend chạy tại: http://localhost:8080
+- Backend chạy tại: http://localhost:8080
 
 ### 4. Cài đặt Frontend (React)
 
 cd frontend
 npm install
-# hoặc
+hoặc
 yarn install
 
-Chạy Frontend:
-
+- Chạy Frontend:
 npm start
-# hoặc
+hoặc
 yarn start
 
-Frontend chạy tại: http://localhost:3000
+- Frontend chạy tại: http://localhost:3000
