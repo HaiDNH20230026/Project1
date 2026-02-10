@@ -1,0 +1,91 @@
+.create-schedule {
+    position: relative;
+    z-index: 10000;
+}
+
+/* button style */
+.create-schedule-button {
+    display: flex;
+    justify-content: space-between; /* text left alignment, icon right */
+    align-items: center;
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 5px 10px;
+    min-width: 130px;
+    min-height: 60px;
+    border-radius: 20px;
+    border: 1px solid #b3b3b3;
+    cursor: pointer;
+    transition: border 0.3s ease;
+    box-shadow: -0.5px 1px rgba(0, 0, 0, 0.2);
+    margin-top: 1px;
+    margin-left: 25px;
+    z-index: 10000;
+}
+
+.create-schedule-button:hover {
+    background: #f7fbff; /* background change on mouse hover */
+}
+
+.create-schedule-button:active {
+    background: #edf4ff; /* darker background on click */
+}
+
+.create-schedule-button::after {
+    content: "▼";
+}
+
+/* icon style */
+.create-button-text {
+    font-size: 14px;
+}
+
+.create-icon {
+    font-size: 20px;
+}
+
+/* list default style (hidden state) */
+.create-schedule-list {
+    position: absolute;
+    top: 47px;
+    left: 25px;
+    width: 90px; /* list width */
+    list-style: none;
+    padding: 7px 0px;
+    border: 1px solid #e1e1e1;
+    border-radius: 3px;
+    background-color: #f8fafb;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2); /* add shadow */
+    
+    /* animation effect */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* list open style */
+.create-schedule-list.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.list-item {
+    display: flex;
+    justify-content: space-between; /* justify between alignment */
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* style on mouse hover */
+.list-item:hover {
+    background: #e4e4e4; /* darker background */
+    border-radius: 0px;
+}
+
+.list-item:active {
+    background: #dddddd; /* darker background on click */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* enhanced shadow on click */
+    transition: transform 0.1s ease-in-out; /* add smooth transition effect */
+}

@@ -1,0 +1,1057 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+
+.image-container img {
+    width: 50px;
+    height: auto;
+    display: block;
+    margin-left: 70px;
+}
+
+/* Dashboard overall layout */
+.app {
+    background-color: #f8fafb;
+    height: 100%; /* Full viewport height */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header styles */
+.header {
+    position: relative; /* Use relative instead of absolute */
+    width: 100%;
+    height: 11vh;
+    background-color: #f8fafb;
+    color: black;
+    display: flex;
+    align-items: center;
+}
+
+/* Sidebar styles */
+.sidebar {
+    position: fixed;
+    top: 13vh;
+    left: 0;
+    height: calc(100vh - 13vh); /* Height excluding header */
+    width: 20%;
+    background-color: #f8fafb;
+}
+
+.sidebar-button-container {
+    margin-top: 300px;
+    display: flex;
+    flex-direction: column; /* Vertical alignment */
+    align-items: center;  
+}
+
+/* Content area */
+.content {
+    margin-left: 20%;
+    width: 75%;
+    height: calc(100vh - 13vh); /* Height excluding header and sidebar */
+    background-color: #f8fafb;
+    overflow: visible; /* Changed */
+}
+
+/* Footer styles */
+.footer {
+    width: 100%;
+    height: 2vh;
+    background-color: #f8fafb;
+}
+
+.logo-container {
+    background-color: #47BBEC;
+    color:#fff;
+    margin-left: 30px;
+    width: 125px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 10px 10px 10px;
+    border-radius: 5px;
+    font-family: "Montserrat Alternates", sans-serif;
+    font-weight: 600;
+}
+
+/* ========== Settings Page Styles ========== */
+.settings {
+    padding: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+    height: calc(100vh - 13vh);
+    overflow-y: auto;
+}
+
+.settings-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    color: #5f6368;
+    font-size: 16px;
+}
+
+.settings-container {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 32px;
+}
+
+.settings-title {
+    margin: 0 0 32px 0;
+    font-size: 28px;
+    font-weight: 400;
+    color: #202124;
+}
+
+.settings-message {
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    font-size: 14px;
+}
+
+.settings-message.success {
+    background: #e6f4ea;
+    color: #137333;
+}
+
+.settings-message.error {
+    background: #fce8e6;
+    color: #c5221f;
+}
+
+.settings-section {
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e8eaed;
+}
+
+.settings-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.settings-section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 20px 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: #202124;
+}
+
+.settings-section-title i {
+    color: #5f6368;
+    font-size: 24px;
+}
+
+.settings-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 16px 0;
+    gap: 24px;
+}
+
+.settings-item-info {
+    flex: 1;
+}
+
+.settings-item-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #202124;
+    margin-bottom: 4px;
+}
+
+.settings-item-description {
+    margin: 0;
+    font-size: 13px;
+    color: #5f6368;
+    line-height: 1.5;
+}
+
+.settings-item-control {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.settings-item-value {
+    font-size: 14px;
+    color: #5f6368;
+    padding: 8px 0;
+}
+
+.settings-slider-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.settings-slider {
+    width: 200px;
+    height: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #e8eaed;
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+}
+
+.settings-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #1a73e8;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.settings-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+}
+
+.settings-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #1a73e8;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.settings-slider-value {
+    min-width: 60px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1a73e8;
+    text-align: right;
+}
+
+.settings-save-btn {
+    background: #1a73e8;
+    color: white;
+    border: none;
+    padding: 8px 24px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.settings-save-btn:hover:not(:disabled) {
+    background: #1557b0;
+}
+
+.settings-save-btn:disabled {
+    background: #e8eaed;
+    color: #9aa0a6;
+    cursor: not-allowed;
+}
+
+/* Settings Header with Back Button */
+.settings-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.settings-header .settings-title {
+    margin: 0;
+}
+
+.settings-back-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #5f6368;
+    transition: background 0.2s;
+}
+
+.settings-back-btn:hover {
+    background: #f1f3f4;
+}
+
+/* Toggle Switch */
+.settings-toggle {
+    position: relative;
+    display: inline-block;
+    width: 52px;
+    height: 28px;
+}
+
+.settings-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.settings-toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.3s;
+    border-radius: 28px;
+}
+
+.settings-toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.settings-toggle input:checked + .settings-toggle-slider {
+    background-color: #1a73e8;
+}
+
+.settings-toggle input:checked + .settings-toggle-slider:before {
+    transform: translateX(24px);
+}
+
+/* Textarea for AI Custom Rules */
+.settings-item-vertical {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.settings-textarea-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-end;
+}
+
+.settings-textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #e8eaed;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 100px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.settings-textarea:focus {
+    border-color: #1a73e8;
+}
+
+.settings-textarea::placeholder {
+    color: #9aa0a6;
+}
+
+/* Logout Button */
+.settings-logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #ea4335;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.settings-logout-btn:hover {
+    background: #d33828;
+}
+
+.settings-logout-btn i {
+    font-size: 18px;
+}
+
+/* ========== Dark Theme Styles ========== */
+body.dark-theme {
+    background-color: #1f1f1f;
+    color: #e8eaed;
+}
+
+body.dark-theme .app {
+    background-color: #1f1f1f;
+}
+
+body.dark-theme .header {
+    background-color: #2d2d2d !important;
+    border-bottom: 1px solid #3c4043;
+}
+
+body.dark-theme .sidebar {
+    background-color: #2d2d2d;
+    border-right: 1px solid #3c4043;
+}
+
+body.dark-theme .content {
+    background-color: #1f1f1f;
+}
+
+body.dark-theme .logo-container {
+    background-color: #3c8bd9;
+}
+
+/* Settings page dark theme */
+body.dark-theme .settings {
+    background-color: #1f1f1f;
+}
+
+body.dark-theme .settings-container {
+    background: #2d2d2d;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme .settings-title {
+    color: #e8eaed;
+}
+
+body.dark-theme .settings-section {
+    border-bottom-color: #3c4043;
+}
+
+body.dark-theme .settings-section-title {
+    color: #e8eaed;
+}
+
+body.dark-theme .settings-section-title i {
+    color: #9aa0a6;
+}
+
+body.dark-theme .settings-item-label {
+    color: #e8eaed;
+}
+
+body.dark-theme .settings-item-description {
+    color: #9aa0a6;
+}
+
+body.dark-theme .settings-item-value {
+    color: #9aa0a6;
+}
+
+body.dark-theme .settings-slider {
+    background: #3c4043;
+}
+
+body.dark-theme .settings-back-btn {
+    color: #9aa0a6;
+}
+
+body.dark-theme .settings-back-btn:hover {
+    background: #3c4043;
+}
+
+body.dark-theme .settings-loading {
+    color: #9aa0a6;
+}
+
+body.dark-theme .settings-textarea {
+    background: #3c4043;
+    border-color: #5f6368;
+    color: #e8eaed;
+}
+
+body.dark-theme .settings-textarea:focus {
+    border-color: #8ab4f8;
+}
+
+body.dark-theme .settings-textarea::placeholder {
+    color: #9aa0a6;
+}
+
+/* Calendar dark theme */
+body.dark-theme .drop-down-button {
+    background: #2d2d2d;
+}
+
+body.dark-theme .drop-down-button:hover {
+    background: #3c4043;
+}
+
+body.dark-theme .drop-down-button svg path,
+body.dark-theme .drop-down-button svg circle {
+    fill: #e8eaed;
+}
+
+body.dark-theme .drop-down-list {
+    background-color: #2d2d2d;
+    border-color: #3c4043;
+}
+
+body.dark-theme .list-item {
+    color: #e8eaed;
+}
+
+body.dark-theme .list-item:hover {
+    background: #3c4043;
+}
+
+/* ========== Mini Calendar Dark Theme ========== */
+body.dark-theme .mini-calendar {
+    background-color: #2d2d2d;
+}
+
+body.dark-theme .calendar-header {
+    background-color: #2d2d2d;
+    color: #e8eaed;
+}
+
+body.dark-theme .calendar-year-month {
+    color: #e8eaed;
+}
+
+body.dark-theme .mini-calendar-table {
+    background-color: #2d2d2d;
+    color: #e8eaed;
+}
+
+body.dark-theme .mini-calendar-table-head th {
+    color: #9aa0a6;
+}
+
+body.dark-theme .mini-calendar-table-body td {
+    color: #e8eaed;
+}
+
+body.dark-theme .mini-calendar-table-body td:hover {
+    background: #3c4043;
+}
+
+body.dark-theme .calendar-shift-button {
+    background: #2d2d2d;
+}
+
+body.dark-theme .calendar-shift-button:hover {
+    background: #3c4043;
+}
+
+body.dark-theme .calendar-shift-button svg path {
+    fill: #e8eaed;
+}
+
+body.dark-theme .selected {
+    background-color: #4a6fa5;
+}
+
+/* ========== Day Calendar Dark Theme ========== */
+body.dark-theme .day-calendar {
+    background-color: #2d2d2d;
+}
+
+body.dark-theme .day-calendar-header {
+    background: #2d2d2d;
+    border-bottom-color: #3c4043;
+}
+
+body.dark-theme .day-calendar-day-of-the-week {
+    color: #e8eaed;
+}
+
+body.dark-theme .day-calendar-day {
+    color: #e8eaed;
+}
+
+body.dark-theme .day-calendar-timezone {
+    color: #9aa0a6;
+}
+
+body.dark-theme .timeline-hour {
+    color: #9aa0a6;
+}
+
+body.dark-theme .space-border {
+    border-bottom-color: #3c4043;
+    border-right-color: #3c4043;
+    color: #9aa0a6;
+}
+
+body.dark-theme .day-calendar-content {
+    background-color: #2d2d2d;
+}
+
+/* ========== Week Calendar Dark Theme ========== */
+body.dark-theme .week-calendar {
+    background-color: #2d2d2d;
+}
+
+body.dark-theme .week-calendar-header {
+    background: #2d2d2d;
+    border-bottom-color: #3c4043;
+}
+
+body.dark-theme .week-day-header {
+    color: #e8eaed;
+}
+
+body.dark-theme .week-day-name {
+    color: #e8eaed;
+}
+
+body.dark-theme .week-day-number {
+    color: #e8eaed;
+}
+
+body.dark-theme .week-timeline-hour {
+    color: #9aa0a6;
+}
+
+body.dark-theme .week-grid-cell {
+    border-color: #3c4043;
+}
+
+/* ========== Month Calendar Dark Theme ========== */
+body.dark-theme .month-calendar {
+    background-color: #2d2d2d;
+}
+
+body.dark-theme .month-calendar-header {
+    background: #2d2d2d;
+    border-bottom-color: #3c4043;
+    color: #e8eaed;
+}
+
+body.dark-theme .month-day-header {
+    color: #9aa0a6;
+}
+
+body.dark-theme .month-day-cell {
+    border-color: #3c4043;
+    color: #e8eaed;
+}
+
+body.dark-theme .month-day-number {
+    color: #e8eaed;
+}
+
+/* ========== Year Calendar Dark Theme ========== */
+body.dark-theme .year-calendar {
+    background-color: #2d2d2d;
+}
+
+body.dark-theme .year-month-card {
+    background-color: #3c4043;
+    color: #e8eaed;
+}
+
+body.dark-theme .year-month-title {
+    color: #e8eaed;
+}
+
+body.dark-theme .year-day {
+    color: #e8eaed;
+}
+
+/* ========== View Selector Dark Theme ========== */
+body.dark-theme .view-selector-button {
+    background: #2d2d2d;
+    color: #e8eaed;
+    border-color: #5f6368;
+}
+
+body.dark-theme .view-selector-button:hover {
+    background: #3c4043;
+}
+
+body.dark-theme .view-selector-list {
+    background-color: #2d2d2d;
+    border-color: #3c4043;
+}
+
+/* ========== Buttons & Common Elements Dark Theme ========== */
+body.dark-theme .today-button,
+body.dark-theme .reset-button {
+    background: #2d2d2d;
+    color: #e8eaed;
+    border-color: #5f6368;
+}
+
+body.dark-theme .today-button:hover,
+body.dark-theme .reset-button:hover {
+    background: #3c4043;
+}
+
+body.dark-theme .date-shifter-button {
+    background: #2d2d2d;
+}
+
+body.dark-theme .date-shifter-button:hover {
+    background: #3c4043;
+}
+
+body.dark-theme .date-shifter-button svg path {
+    fill: #e8eaed;
+}
+
+body.dark-theme .date-display {
+    color: #e8eaed;
+}
+
+/* ========== Create Button Dark Theme ========== */
+body.dark-theme .create-button {
+    background: #3c4043;
+    color: #e8eaed;
+}
+
+body.dark-theme .create-button:hover {
+    background: #4a4a4a;
+}
+
+body.dark-theme .create-dropdown {
+    background-color: #2d2d2d;
+    border-color: #3c4043;
+}
+
+body.dark-theme .create-dropdown-item {
+    color: #e8eaed;
+}
+
+body.dark-theme .create-dropdown-item:hover {
+    background: #3c4043;
+}
+
+/* ========== Modal Dark Theme ========== */
+body.dark-theme .modal-overlay {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+body.dark-theme .modal-content,
+body.dark-theme .event-modal,
+body.dark-theme .task-modal,
+body.dark-theme .details-modal {
+    background: #2d2d2d;
+    color: #e8eaed;
+}
+
+body.dark-theme .modal-header {
+    border-bottom-color: #3c4043;
+}
+
+body.dark-theme .modal-title {
+    color: #e8eaed;
+}
+
+body.dark-theme .modal-close-btn {
+    color: #9aa0a6;
+}
+
+body.dark-theme .modal-close-btn:hover {
+    background: #3c4043;
+}
+
+body.dark-theme .modal-input,
+body.dark-theme .modal-textarea,
+body.dark-theme .modal-select {
+    background: #3c4043;
+    border-color: #5f6368;
+    color: #e8eaed;
+}
+
+body.dark-theme .modal-input::placeholder,
+body.dark-theme .modal-textarea::placeholder {
+    color: #9aa0a6;
+}
+
+body.dark-theme .modal-label {
+    color: #e8eaed;
+}
+
+/* ========== Event Card Dark Theme ========== */
+body.dark-theme .event-card {
+    border-color: #3c4043;
+}
+
+body.dark-theme .event-title {
+    color: #e8eaed;
+}
+
+body.dark-theme .event-time {
+    color: #9aa0a6;
+}
+
+/* ========== Scrollbar Dark Theme ========== */
+body.dark-theme ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+body.dark-theme ::-webkit-scrollbar-track {
+    background: #2d2d2d;
+}
+
+body.dark-theme ::-webkit-scrollbar-thumb {
+    background: #5f6368;
+    border-radius: 4px;
+}
+
+body.dark-theme ::-webkit-scrollbar-thumb:hover {
+    background: #80868b;
+}
+
+/* ========== AI Modal Dark Theme ========== */
+body.dark-theme .ai-modal,
+body.dark-theme .ai-schedule-modal {
+    background: #2d2d2d;
+    color: #e8eaed;
+}
+
+body.dark-theme .ai-proposal-card {
+    background: #3c4043;
+    border-color: #5f6368;
+}
+
+body.dark-theme .ai-proposal-title {
+    color: #e8eaed;
+}
+
+body.dark-theme .ai-proposal-time {
+    color: #9aa0a6;
+}
+
+/* ========== General Text Dark Theme ========== */
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme h5,
+body.dark-theme h6 {
+    color: #e8eaed;
+}
+
+body.dark-theme p {
+    color: #bdc1c6;
+}
+
+body.dark-theme span {
+    color: inherit;
+}
+
+body.dark-theme label {
+    color: #e8eaed;
+}
+
+body.dark-theme input,
+body.dark-theme textarea,
+body.dark-theme select {
+    background-color: #3c4043;
+    border-color: #5f6368;
+    color: #e8eaed;
+}
+
+body.dark-theme input::placeholder,
+body.dark-theme textarea::placeholder {
+    color: #9aa0a6;
+}
+
+body.dark-theme button {
+    color: inherit;
+}
+
+body.dark-theme a {
+    color: #8ab4f8;
+}
+
+/* ========== Details Modal Dark Theme ========== */
+body.dark-theme .details-modal-content {
+    background: #2d2d2d;
+    color: #e8eaed;
+}
+
+body.dark-theme .details-modal-header {
+    border-bottom-color: #3c4043;
+}
+
+body.dark-theme .details-modal-title {
+    color: #e8eaed;
+}
+
+body.dark-theme .details-modal-section {
+    border-bottom-color: #3c4043;
+}
+
+body.dark-theme .details-modal-label {
+    color: #9aa0a6;
+}
+
+body.dark-theme .details-modal-value {
+    color: #e8eaed;
+}
+
+body.dark-theme .details-modal-icon {
+    color: #9aa0a6;
+}
+
+/* ========== Additional Dark Theme Styles ========== */
+/* Shift buttons (date navigation) */
+body.dark-theme .shift-button {
+    background: #2d2d2d;
+}
+
+body.dark-theme .shift-button:hover {
+    background: #3c4043;
+}
+
+body.dark-theme .shift-button svg,
+body.dark-theme .icon-wrapper svg {
+    fill: #e8eaed;
+}
+
+/* Schedule columns and borders */
+body.dark-theme .schedule-column {
+    border-bottom-color: #3c4043;
+}
+
+body.dark-theme .event-box {
+    border-color: #3c4043;
+}
+
+/* Current time indicator */
+body.dark-theme .current-time {
+    border-bottom-color: #ed3a30;
+}
+
+/* Footer */
+body.dark-theme .footer {
+    background-color: #2d2d2d;
+    border-top: 1px solid #3c4043;
+    color: #9aa0a6;
+}
+
+/* Task list */
+body.dark-theme .task-list {
+    background-color: #2d2d2d;
+}
+
+body.dark-theme .task-item {
+    background-color: #3c4043;
+    border-color: #5f6368;
+    color: #e8eaed;
+}
+
+body.dark-theme .task-item:hover {
+    background-color: #4a4a4a;
+}
+
+body.dark-theme .task-title {
+    color: #e8eaed;
+}
+
+body.dark-theme .task-description {
+    color: #9aa0a6;
+}
+
+body.dark-theme .task-priority {
+    color: #e8eaed;
+}
+
+/* Sidebar create button area */
+body.dark-theme .sidebar-create-area {
+    background-color: #2d2d2d;
+}
+
+/* Table elements */
+body.dark-theme table {
+    background-color: #2d2d2d;
+    color: #e8eaed;
+}
+
+body.dark-theme th {
+    color: #9aa0a6;
+}
+
+body.dark-theme td {
+    color: #e8eaed;
+    border-color: #3c4043;
+}
+
+/* SVG icons */
+body.dark-theme svg path {
+    fill: currentColor;
+}
+
+/* Tooltip */
+body.dark-theme .tooltip {
+    background: #e8eaed;
+    color: #2d2d2d;
+}
+
+/* ========== AI Generated Event Styles ========== */
+.ai-generated-event {
+    position: relative;
+    border: none;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.ai-generated-event::before {
+    content: "✨";
+    position: absolute;
+    top: 2px;
+    right: 5px;
+    font-size: 10px;
+}
+
+.ai-generated-event:hover {
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
+    transform: scale(1.02);
+    transition: all 0.2s ease;
+}
+
+/* AI Generated Event in Month view */
+.event-item.ai-generated-event {
+    position: relative;
+}
+
+.event-item.ai-generated-event::before {
+    content: "✨";
+    margin-right: 4px;
+    font-size: 10px;
+}
+
+/* Dark theme AI event adjustments */
+body.dark-theme .ai-generated-event {
+    box-shadow: 0 2px 8px rgba(118, 75, 162, 0.4);
+}
+
+body.dark-theme .ai-generated-event:hover {
+    box-shadow: 0 4px 12px rgba(118, 75, 162, 0.6);
+}

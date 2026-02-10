@@ -1,0 +1,170 @@
+import React, { useCallback, useEffect, useState } from 'react';
+import 'styles/styles.css'
+import CalendarByDay from 'components/calendar/content/CalendarByDay';
+import CalendarByWeek from 'components/calendar/content/CalendarByWeek';
+import CalendarByMonth from 'components/calendar/content/CalendarByMonth';
+import CalendarByYear from 'components/calendar/content/CalendarByYear';
+import EventModal from 'components/modal/event/EventModal';
+import TaskModal from 'components/modal/task/TaskModal';
+import EventDetailsModal from 'components/modal/details/EventDetailsModal';
+import TaskDetailsModal from 'components/modal/details/TaskDetailsModal';
+import { getEventsByUnitWithDate } from 'api/calendarApi';
+
+interface ContentProps {
+    viewType: "day" | "week" | "month" | "year";
+    year: number;
+    month: number;
+    day: number;
+    activeModal: "event" | "task" | null;
+    setActiveModal: (type: "event" | "task" | null) => void;
+}
+
+interface EventDetails {
+    id: string;
+    title: string;
+    startTime: string;
+    endTime: string;
+    description?: string;
+    location?: string;
+    color: string;
+    // add properties as needed
+}
+
+interface TaskDetails {
+    id: string;
+    title: string;
+    dueDate: string;  // Backend returns dueDate, not startTime/endTime
+    description?: string;
+    isCompleted: boolean;
+    taskType?: string;
+    priority?: string;
+    scale?: string;
+    status?: string;
+}
+
+const Content: React.FC<ContentProps> = ({ viewType, year, month, day, activeModal, setActiveModal }) => {
+
+    const [detailsModal, setDetailsModal] = useState({
+        isOpen: false,
+        type: null,
+        data: null
+    });
+
+    const [events, setEvents] = useState<EventDetails[]>([]);
+    const [tasks, setTasks] = useState<TaskDetails[]>([]);
+
+    const [modalDate, setModalDate] = useState({
+        modalYear: year,
+        modalMonth: month,
+        modalDay: day
+    });
+
+    const getEvents = useCallback(() => {
+        getEventsByUnitWithDate(viewType, year, month, day)
+            .then(response => {
+                const { events, tasks } = response.data;
+                setEvents(events);
+                setTasks(tasks);
+            })
+            .catch((error) => errorResponse(error));
+    }, [viewType, year, month, day]);
+
+    useEffect(() => {
+        getEvents();
+        setModalDate({ modalYear: year, 
+                    modalMonth:month, 
+                    modalDay:day });
+        console.log(modalDate.modalYear + " " + modalDate.modalMonth + " " + modalDate.modalDay);
+    }, [viewType, year, month, day]);
+
+    function errorResponse(error:any) {
+        console.log(error)
+    }
+
+    return (
+        <div className="content">
+            {activeModal === "event" && 
+                <EventModal 
+                    modalYear={modalDate.modalYear} 
+                    modalMonth={modalDate.modalMonth} 
+                    modalDay={modalDate.modalDay} 
+                    setActiveModal={setActiveModal} 
+                    activeModal={activeModal}
+                    refreshEvents={getEvents} />} 
+
+            {activeModal === "task" && 
+                <TaskModal 
+                    modalYear={modalDate.modalYear} 
+                    modalMonth={modalDate.modalMonth} 
+                    modalDay={modalDate.modalDay} 
+                    setActiveModal={setActiveModal} 
+                    activeModal={activeModal}
+                    refreshTasks={getEvents}/>} 
+            
+            {detailsModal.isOpen && (
+                <>
+                    {detailsModal.type === 'event' && detailsModal.data && (
+                        <EventDetailsModal
+                            data={detailsModal.data}
+                            onClose={() =>
+                                setDetailsModal({ isOpen: false, type: null, data: null })
+                            }
+                            refreshEvents={getEvents}
+                        />
+                    )}
+
+                    {detailsModal.type === 'task' && detailsModal.data && (
+                        <TaskDetailsModal
+                            data={detailsModal.data}
+                            onClose={() =>
+                                setDetailsModal({ isOpen: false, type: null, data: null })
+                            }
+                            onRefresh={getEvents}
+                        />
+                    )}
+                </>
+            )}
+
+            {viewType === "day" && 
+                <CalendarByDay 
+                    events={events}
+                    tasks={tasks} 
+                    year={year} 
+                    month={month} 
+                    day={day} 
+                    setActiveModal={setActiveModal} 
+                    setModalDetails={setDetailsModal}
+                    setModalDate={setModalDate} />}
+
+            {viewType === "week" && 
+                <CalendarByWeek 
+                    events={events} 
+                    tasks={tasks} 
+                    year={year} 
+                    month={month} 
+                    day={day} 
+                    setActiveModal={setActiveModal} 
+                    setModalDetails={setDetailsModal}
+                    setModalDate={setModalDate} />}
+
+            {viewType === "month" && 
+                <CalendarByMonth 
+                    events={events} 
+                    tasks={tasks} 
+                    year={year} 
+                    month={month} 
+                    day={day}
+                    setActiveModal={setActiveModal} 
+                    setModalDetails={setDetailsModal}
+                    setModalDate={setModalDate} />}
+                    
+            {viewType === "year" && 
+                <CalendarByYear 
+                    year={year} 
+                    month={month} 
+                    day={day} />}
+        </div>
+    );
+};
+
+export default Content;

@@ -1,0 +1,44 @@
+.today-button {
+    position: relative;
+    background: #F8FAFB; /* button background color */
+    color: rgb(0, 0, 0); /* button text color */
+    padding: 10px 25px; /* padding inside button */
+    border-radius: 20px;
+    border: 1px solid #545454; /* add border (thickness 2px, color #0056b3) */
+    cursor: pointer;
+    transition: border 0.3s ease;
+}
+
+.today-button:hover {
+    background: #e4e4e4; /* background change on mouse hover */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* shadow on mouse hover */
+}
+
+.today-button:active {
+    background: #dddddd; /* darker background on click */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* enhanced shadow on click */
+}
+
+.tooltip {
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: black;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none;
+
+    z-index: 9999; /* display above other elements */
+}
+
+.today-button:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}

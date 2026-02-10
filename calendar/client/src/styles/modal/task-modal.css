@@ -1,0 +1,142 @@
+.task-modal {
+    background: #F0F4F9;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 480px;
+    height: 520px;
+    pointer-events: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.task-modal-compact {
+    width: 480px;
+    height: 520px;
+}
+
+.task-modal-large {
+    width: 680px;
+    height: 620px;
+}
+
+.task-modal-expanded {
+    width: 520px;
+}
+
+.task-modal-compact.task-modal-expanded {
+    width: 520px;
+}
+
+.task-modal-large.task-modal-expanded {
+    width: 720px;
+}
+
+.task-modal .event-modal-content {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 60px;
+}
+
+.task-modal .event-modal-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #F0F4F9;
+    padding: 10px 15px;
+    border-top: 1px solid #e0e0e0;
+    border-radius: 0 0 20px 20px;
+}
+
+/* Task Type Buttons */
+.task-type-btn {
+    padding: 6px 14px;
+    border: 1px solid #dadce0;
+    border-radius: 16px;
+    background: white;
+    color: #5f6368;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.task-type-btn:hover {
+    background: #f1f3f4;
+}
+
+.task-type-btn.active {
+    background: #1a73e8;
+    color: white;
+    border-color: #1a73e8;
+}
+
+/* Priority Buttons */
+.task-priority-btn {
+    padding: 6px 14px;
+    border: 1px solid #dadce0;
+    border-radius: 16px;
+    background: white;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.task-priority-btn:hover {
+    opacity: 0.8;
+}
+
+.task-priority-btn.priority-low {
+    color: #34a853;
+    border-color: #34a853;
+}
+
+.task-priority-btn.priority-low.active {
+    background: #34a853;
+    color: white;
+}
+
+.task-priority-btn.priority-medium {
+    color: #fbbc04;
+    border-color: #fbbc04;
+}
+
+.task-priority-btn.priority-medium.active {
+    background: #fbbc04;
+    color: white;
+}
+
+.task-priority-btn.priority-high {
+    color: #ea4335;
+    border-color: #ea4335;
+}
+
+.task-priority-btn.priority-high.active {
+    background: #ea4335;
+    color: white;
+}
+
+/* Scale Buttons */
+.task-scale-btn {
+    padding: 6px 14px;
+    border: 1px solid #dadce0;
+    border-radius: 16px;
+    background: white;
+    color: #5f6368;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.task-scale-btn:hover {
+    background: #f1f3f4;
+}
+
+.task-scale-btn.active {
+    background: #7c4dff;
+    color: white;
+    border-color: #7c4dff;
+}

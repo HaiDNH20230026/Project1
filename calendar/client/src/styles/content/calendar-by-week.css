@@ -1,0 +1,197 @@
+.week-calendar {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 20px;
+    background-color: #ffffff;
+}
+
+.week-calendar-header {
+    width: 100%;
+    height: 15%;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    position: sticky;
+    background: white;
+    z-index: 10;
+}
+
+.week-calendar-timezone {
+    font-size: 14px;
+    text-align: center;
+}
+
+.week-calendar-day-container {
+    width: 40%;
+    height: 100%;
+    padding-top: 10px;
+}
+
+.week-calendar-day-of-the-week {
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #000000;
+}
+
+.week-calendar-day {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 24px;
+}
+
+.week-calendar-day-of-the-week-today {
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #135dce;
+}
+
+.week-calendar-day-today {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    background: #135dce;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 24px;
+}
+
+.week-calendar-content {
+    width: 100%;
+    height: 85%;
+    display: flex;
+    overflow-y: auto;
+}
+
+.week-calendar-timeline {
+    width: 7%;
+    height: 100%;
+}
+
+.timeline-hour {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    font-size: 10px;
+    color: #000000;
+    border-bottom: 1px solid #ffffff;
+}
+
+.space-border {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #666;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+.week-calendar-space {
+    width: 1%;
+    height: 100%;
+}
+
+.week-calendar-schedule {
+    width: 92%;
+    height: 100%;
+    position: relative;
+    display: flex;
+}
+
+.week-calendar-schedule-container {
+    width: 14%;
+}
+
+.week-calendar-schedule-column {
+    width: 100%;
+    height: 40px;
+    border-left: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.week-calendar-event-box {
+    position: absolute;
+    width: 14%; /* use entire event area */
+    background-color: #376cfc;
+    color: white;
+    box-sizing: border-box;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ffffff;
+    font-size: 14px;
+}
+
+/* Task Box Style - Different from event */
+.week-calendar-task-box {
+    position: absolute;
+    width: 13%;
+    height: 24px;
+    background-color: rgba(124, 77, 255, 0.15);
+    color: #333;
+    box-sizing: border-box;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    padding: 0 6px;
+    border-left: 3px solid #7c4dff;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.week-calendar-task-box:hover {
+    background-color: rgba(124, 77, 255, 0.3);
+}
+
+.quarter {
+    width: 100%;
+    height: 10px;
+}
+
+.current-time {
+    border-bottom: 2px solid #ed3a30 !important;
+    z-index: 9; /* above other elements */
+    position: relative; /* maintain default layout */
+}
+
+.week-calendar-current-time-ball {
+    width: 12.5px;
+    height: 12.5px;
+    background-color: #ed3a30;
+    border-radius: 50%;
+    z-index: 9; /* above other elements */
+    position: absolute;
+    left: -5px;
+}
+
+.week-calendar-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.week-calendar-content::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+.week-calendar-content::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}

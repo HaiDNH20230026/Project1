@@ -1,0 +1,182 @@
+/* AI Proposal Card Styles */
+
+.ai-proposal-card {
+    background: white;
+    border: 1px solid #e8eaed;
+    border-radius: 12px;
+    padding: 16px;
+    transition: all 0.2s ease;
+    min-width: 280px;
+}
+
+.ai-proposal-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.ai-proposal-card.accepted {
+    background: #e6f4ea;
+    border-color: #34a853;
+}
+
+/* Header */
+.proposal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.proposal-session {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.session-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    background: #e8eaed;
+    color: #5f6368;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.score-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 8px;
+    color: white;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Time Block */
+.proposal-time {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.time-block {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.time-block i {
+    font-size: 18px;
+    color: #667eea;
+    flex-shrink: 0;
+}
+
+.time-block .day {
+    font-size: 14px;
+    font-weight: 500;
+    color: #202124;
+}
+
+.time-block .time {
+    font-size: 14px;
+    color: #5f6368;
+}
+
+/* Proposal Title */
+.proposal-title {
+    margin-bottom: 12px;
+    padding: 8px 12px;
+    background: #e8f0fe;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #1a73e8;
+    word-break: break-word;
+}
+
+/* Explanation */
+.proposal-explanation {
+    margin-bottom: 12px;
+}
+
+.proposal-explanation p {
+    margin: 0;
+    font-size: 13px;
+    color: #5f6368;
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+/* Actions */
+.proposal-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-accept, .btn-reject {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-accept {
+    background: #34a853;
+    color: white;
+}
+
+.btn-accept:hover:not(:disabled) {
+    background: #2d9248;
+}
+
+.btn-reject {
+    background: #f1f3f4;
+    color: #5f6368;
+}
+
+.btn-reject:hover:not(:disabled) {
+    background: #e8eaed;
+}
+
+.btn-accept:disabled, .btn-reject:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-accept i, .btn-reject i {
+    font-size: 16px;
+}
+
+/* Accepted State */
+.proposal-accepted {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px;
+    background: #34a853;
+    color: white;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.proposal-accepted i {
+    font-size: 18px;
+}

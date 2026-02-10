@@ -1,0 +1,73 @@
+/* AI Schedule Button Styles */
+
+.ai-schedule-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Google Sans', sans-serif;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.ai-schedule-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Full variant */
+.ai-schedule-btn-full {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 14px;
+}
+
+.ai-schedule-btn-full:hover:not(:disabled) {
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46a2 100%);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    transform: translateY(-1px);
+}
+
+.ai-schedule-btn-full:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.ai-schedule-btn-full i {
+    font-size: 18px;
+}
+
+/* Icon variant */
+.ai-schedule-btn-icon {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    background: #f0f4f9;
+    color: #667eea;
+}
+
+.ai-schedule-btn-icon:hover:not(:disabled) {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.ai-schedule-btn-icon i {
+    font-size: 20px;
+}
+
+/* Text variant */
+.ai-schedule-btn-text {
+    padding: 6px 12px;
+    background: transparent;
+    color: #667eea;
+    font-size: 13px;
+    border: 1px solid #667eea;
+}
+
+.ai-schedule-btn-text:hover:not(:disabled) {
+    background: #667eea;
+    color: white;
+}

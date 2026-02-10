@@ -1,0 +1,65 @@
+/* list default style (hidden state) */
+.modal-time-list {
+    position: absolute;
+    top:  35px;
+    width: 125px; /* list width */
+    height: 170px;
+    list-style: none;
+    padding: 7px 0px;
+    margin-top: 10px;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    background-color: #f8fafb;
+    cursor: pointer;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* add shadow */
+    
+    /* animation effect */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+
+    z-index: 9999; /* display above other elements */
+    overflow-y: auto;
+}
+
+.modal-time-list-item {
+    display: flex;
+    justify-content: space-between; /* justify between alignment */
+    align-items: center;
+    padding: 10px 10px; /* add spacing between items */
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* style on mouse hover */
+.modal-time-list-item:hover {
+    background: #e4e4e4; /* darker background */
+    border-radius: 0px;
+}
+
+.modal-time-list-item:active {
+    background: #dddddd; /* darker background on click */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* enhanced shadow on click */
+    transition: transform 0.1s ease-in-out; /* add smooth transition effect */
+}
+
+/* list open style */
+.modal-time-list.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.modal-time-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-time-list::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+.modal-time-list::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+

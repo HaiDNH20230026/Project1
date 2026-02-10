@@ -1,0 +1,30 @@
+.description-input:empty::before {
+    content: attr(description-placeholder);
+    color: #aaa;
+    pointer-events: none;
+    display: block;
+}
+
+.description-input-wrapper {
+    width: 80%;
+    min-height: 32px;
+    border-radius: 6px 6px 6px 6px;
+    padding: 7px 10px 5px 10px;
+    background-color: #DDE3EA;
+    overflow: hidden;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom-color 0.2s ease-in-out;
+    font-size: 14px;
+    color: #454847;
+}
+
+.description-input-wrapper:focus-within {
+    border-bottom: 2px solid #1a73e8; /* no thickness change on focus */
+}
+
+.description-input {
+    outline: none;
+    white-space: pre-wrap; /* apply line breaks */
+    word-break: break-word;
+    line-height: 1.5;
+}

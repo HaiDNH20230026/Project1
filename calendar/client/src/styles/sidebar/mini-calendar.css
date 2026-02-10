@@ -1,0 +1,119 @@
+.mini-calendar {
+    background-color: #f8fafb;
+    width:100%;
+    height:60%;
+    display: flex;
+    flex-direction: column; /* vertical list layout */
+    align-items: center;     /* horizontal center alignment */
+    justify-content: center; /* vertical center alignment */
+    padding: 25px 20px 25px 20px;
+    top: 60px;
+    position: absolute;
+}
+
+.mini-calendar-item {
+    cursor: pointer;
+}
+
+.calendar-header {
+    width: 100%;
+    height: 15%;
+    background-color: #f8fafb;
+    color: black;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+}
+
+.calendar-year-month {
+    font-weight: 500;
+    font-size: 14px;
+    padding-left: 2px;
+}
+
+.mini-calendar-table-head th {
+    font-weight: normal;
+    cursor: default;
+    font-size: 11px;
+    font-weight: 500;
+    color:#5a5a5a
+}
+
+.mini-calendar-table-body td {
+    text-align: center; /* center alignment */
+    vertical-align: middle; /* vertical center alignment */
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.mini-calendar-table-body td:hover {
+    border-radius: 100%;
+    background: #e4e4e4; /* background change on mouse hover */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* shadow on mouse hover */
+}
+
+.mini-calendar-table-body td:active {
+    background: #dddddd; /* darker background on click */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* enhanced shadow on click */
+}
+
+.mini-calendar-table {
+    width: 100%;
+    height: 85%;
+    background-color: #f8fafb;
+    color: black;
+    border-spacing: 5px;
+}
+
+.month-shifter {
+    display: flex;  /* align buttons horizontally */
+    align-items: center;  /* vertical center alignment */
+    position: absolute;    /* position within parent element */
+    right: 0px;            /* attach to right edge */
+    gap: 2px;              /* adjust button spacing */
+    padding-right: 20px;   /* add right margin */
+}
+
+.calendar-shift-button {
+    position: relative;
+    background: #F8FAFD;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.calendar-shift-button:hover {
+    background: #e4e4e4; /* background change on mouse hover */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* shadow on mouse hover */
+}
+
+.calendar-shift-button:active {
+    background: #dddddd; /* darker background on click */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* enhanced shadow on click */
+}
+
+.selected {
+    background-color: #bbccff;
+    border-radius: 50%;
+}
+
+.selected:hover {
+    background-color: #9eb2ed !important;
+    border-radius: 50%;
+}
+
+.today {
+    background-color: #305de2 !important;
+    border-radius: 50%;
+    color: white !important;
+}
+
+.today:hover {
+    background-color: #2b4fbd !important;
+    border-radius: 50%;
+    color: white !important;
+}

@@ -1,0 +1,869 @@
+\documentclass[a4paper, 13pt]{report}
+
+% ===== BASIC PACKAGES =====
+\usepackage{a4wide}
+\usepackage[utf8]{inputenc}
+\usepackage[vietnamese]{babel}
+\usepackage[left=2.50cm, right=2.50cm, top=2.50cm, bottom=2.5cm]{geometry}
+
+\pdfcompresslevel=9
+\pdfobjcompresslevel=2
+
+% ===== GRAPHICS & FIGURES =====
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{caption, subcaption}
+\usepackage{xcolor}
+
+% ===== TABLES =====
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{makecell}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+
+% ===== MATH =====
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% ===== CODE & ALGORITHMS =====
+\usepackage{listings}
+\usepackage{alltt}
+\usepackage{mdframed}
+
+% ===== TIKZ & DIAGRAMS =====
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric, calc, fit, backgrounds}
+\pgfplotsset{compat=1.18}
+
+% ===== FORMATTING =====
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{etoolbox}
+\usepackage{enumitem}
+\usepackage{url}
+
+% ===== HYPERLINKS =====
+\usepackage[
+    bookmarks,
+    hidelinks,
+    colorlinks=true,
+    urlcolor=blue,
+    citecolor=blue,
+    linkcolor=black
+]{hyperref}
+
+% ===== LISTINGS CONFIGURATION =====
+\lstset{
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    frame=single,
+    language=Java,
+    showstringspaces=false,
+    commentstyle=\color{gray}\itshape,
+    keywordstyle=\color{blue}\bfseries,
+    stringstyle=\color{red},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    numbersep=5pt,
+    tabsize=4,
+    captionpos=b,
+    inputencoding=utf8,
+    extendedchars=true,
+    literate=%
+        {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+        {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+        {ã}{{\~a}}1 {õ}{{\~o}}1
+        {â}{{\^a}}1 {ê}{{\^e}}1 {ô}{{\^o}}1
+        {ă}{{\u{a}}}1
+        {ơ}{{\ohorn}}1 {ư}{{\uhorn}}1
+        {đ}{{\dj}}1 {Đ}{{\DJ}}1
+        {ế}{{\'{ê}}}1 {ề}{{\`{ê}}}1 {ể}{{\h{ê}}}1 {ễ}{{\~{ê}}}1 {ệ}{{\d{ê}}}1
+        {ấ}{{\'{â}}}1 {ầ}{{\`{â}}}1 {ẩ}{{\h{â}}}1 {ẫ}{{\~{â}}}1 {ậ}{{\d{â}}}1
+        {ắ}{{\'{ă}}}1 {ằ}{{\`{ă}}}1 {ẳ}{{\h{ă}}}1 {ẵ}{{\~{ă}}}1 {ặ}{{\d{ă}}}1
+        {ố}{{\'{ô}}}1 {ồ}{{\`{ô}}}1 {ổ}{{\h{ô}}}1 {ỗ}{{\~{ô}}}1 {ộ}{{\d{ô}}}1
+        {ớ}{{\'{ơ}}}1 {ờ}{{\`{ơ}}}1 {ở}{{\h{ơ}}}1 {ỡ}{{\~{ơ}}}1 {ợ}{{\d{ơ}}}1
+        {ứ}{{\'{ư}}}1 {ừ}{{\`{ư}}}1 {ử}{{\h{ư}}}1 {ữ}{{\~{ư}}}1 {ự}{{\d{ư}}}1
+        {ý}{{\'y}}1 {ỳ}{{\`y}}1 {ỷ}{{\h{y}}}1 {ỹ}{{\~y}}1 {ỵ}{{\d{y}}}1
+}
+
+% ===== AUTOREF NAMES =====
+\renewcommand{\figureautorefname}{Hình}
+\renewcommand{\tableautorefname}{Bảng}
+\renewcommand{\chapterautorefname}{Chương}
+\renewcommand{\sectionautorefname}{Mục}
+
+% ===== PAGE STYLE =====
+\setlength{\parindent}{0pt}
+\setcounter{secnumdepth}{3}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{IT3150 --- Project 1 --- Ứng dụng Calendar với AI Scheduling}}
+\rfoot{Trang \thepage\ / \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% ============================================================
+\begin{document}
+
+% ==================== TITLE PAGE ====================
+\begin{titlepage}
+    \begin{center}
+        \Large\textbf{ĐẠI HỌC BÁCH KHOA HÀ NỘI}\\
+        \vspace{0.5cm}
+        \Large\textbf{TRƯỜNG CÔNG NGHỆ THÔNG TIN \& TRUYỀN THÔNG}\\
+        
+        \vspace{1.5cm}
+        \includegraphics[width=.8\textwidth]{images/hust-soict.png}
+
+        \vfill
+        
+        \rule{16cm}{0.5mm}
+        \Huge\textbf{Báo Cáo Bài Tập Lớn}\\
+        
+        \vspace{0.5cm}
+        
+        \Large\textbf{Đề tài: Xây dựng ứng dụng Calendar\\với tính năng AI Scheduling}\\
+        \rule{16cm}{0.5mm}
+        \vfill\vfill
+        \LARGE\textbf{Học phần: \textcolor{blue}{Project 1}}\\
+        \vspace{0.5cm}
+        \Large\textbf{Mã học phần: IT3150}\\
+    \end{center}
+    \vfill
+    \begin{center}
+    \renewcommand{\arraystretch}{2.0}
+        \begin{tabular}{l l l}
+            \large\bf Giảng viên hướng dẫn: & \large\bf Nguyễn Thanh Hùng \\
+            \large\bf Sinh viên thực hiện: & \large\bf Đỗ Ngọc Hoàng Hải & \large\bf 20230026 \\
+        \end{tabular}
+    \end{center}
+    \vfill
+    \begin{center}
+        \Large\textbf{Hà Nội, \today}
+    \end{center}
+\end{titlepage}
+
+% ==================== TABLE OF CONTENTS ====================
+\begingroup
+    \pagenumbering{roman}
+    \tableofcontents
+    \thispagestyle{empty}
+\endgroup
+
+\clearpage
+\pagenumbering{arabic}
+\pagestyle{fancy}
+
+% ============================================================
+% LỜI NÓI ĐẦU
+% ============================================================
+\chapter*{Lời nói đầu}
+\addcontentsline{toc}{chapter}{Lời nói đầu}
+
+Trong bối cảnh chuyển đổi số và nhịp sống ngày càng bận rộn, nhu cầu quản lý thời gian cá nhân một cách thông minh và hiệu quả trở nên cấp thiết hơn bao giờ hết. Đặc biệt với sinh viên, việc cân bằng giữa lịch học, deadline bài tập lớn, và các hoạt động cá nhân là một thách thức thường nhật. Mặc dù đã có nhiều ứng dụng lịch phổ biến như Google Calendar, hầu hết đều chỉ dừng lại ở mức \textit{ghi nhận} sự kiện --- thiếu đi khả năng \textit{chủ động đề xuất} cách phân bổ thời gian cho người dùng.
+
+Báo cáo này trình bày quá trình xây dựng và phát triển ứng dụng \textbf{Calendar} --- một nền tảng quản lý lịch cá nhân full-stack tích hợp trí tuệ nhân tạo (AI), lấy cảm hứng từ Google Calendar nhưng bổ sung tính năng lên lịch tự động sử dụng \textbf{Google Gemini AI}. Hệ thống không chỉ hỗ trợ quản lý sự kiện và công việc mà còn có khả năng phân tích lịch trình hiện tại, tìm các khoảng trống phù hợp, và đề xuất thời gian học/làm việc tối ưu cho sinh viên.
+
+Hệ thống được thiết kế dựa trên kiến trúc \textbf{Client--Server} hiện đại với hai nhóm chức năng chính:
+\begin{itemize}[leftmargin=2cm]
+    \item \textbf{Quản lý lịch trình}: Hỗ trợ đầy đủ CRUD cho sự kiện (với lặp lại, mã màu) và công việc (với mức độ ưu tiên, deadline, trạng thái). Cung cấp nhiều chế độ xem: ngày, tuần, tháng, năm.
+    \item \textbf{AI Scheduling}: Tự động phân tích khoảng thời gian trống, xây dựng prompt tối ưu cho Gemini AI, đề xuất lịch học/làm việc dựa trên ưu tiên và deadline, kèm theo giải thích (Explainable AI) cho mỗi đề xuất.
+\end{itemize}
+
+Thông qua đề tài, em kỳ vọng người đọc có thể hiểu được cách xây dựng một ứng dụng web full-stack hoàn chỉnh với kiến trúc rõ ràng, đồng thời thấy được tiềm năng ứng dụng AI sinh tạo (Generative AI) vào bài toán quản lý thời gian thực tế.
+
+\vspace{1em}
+\noindent
+\textbf{Mã nguồn:} \url{https://github.com/HaiDNH20230026}
+
+\vspace{0.5em}
+\noindent
+\textbf{Website:} \url{https://calendar.io.kr}
+
+% ============================================================
+% CHƯƠNG 1: GIỚI THIỆU ĐỀ TÀI
+% ============================================================
+\chapter{Giới thiệu đề tài}
+
+\section{Đặt vấn đề}
+
+Sinh viên đại học thường phải đối mặt với khối lượng công việc lớn: lịch học trên lớp, deadline bài tập, ôn thi, dự án nhóm, và các hoạt động ngoại khóa. Việc quản lý thời gian thủ công dễ dẫn đến:
+\begin{itemize}[leftmargin=2cm]
+    \item Quên deadline hoặc chồng chéo lịch trình
+    \item Không biết phân bổ thời gian hợp lý cho các task dài hạn (ví dụ: bài tập lớn cần 10--20 giờ)
+    \item Trì hoãn do không có kế hoạch cụ thể
+\end{itemize}
+
+Các ứng dụng lịch hiện tại chỉ đóng vai trò \textit{ghi nhận thụ động} --- người dùng phải tự quyết định khi nào làm gì. Đề tài này đề xuất giải pháp bổ sung thành phần \textbf{AI chủ động lên lịch}, giúp tự động tìm thời gian trống phù hợp và đề xuất phiên làm việc dựa trên mức độ ưu tiên, deadline, và thói quen sinh hoạt.
+
+\section{Mục tiêu đề tài}
+
+\begin{enumerate}[leftmargin=2cm]
+    \item Xây dựng ứng dụng web quản lý lịch cá nhân \textbf{full-stack} hoàn chỉnh với frontend React và backend Spring Boot.
+    \item Tích hợp \textbf{Google Gemini AI} để tự động đề xuất lịch trình cho các task có deadline, kèm giải thích cho mỗi đề xuất.
+    \item Triển khai hệ thống xác thực an toàn với \textbf{JWT + OAuth2 (Google Sign-in)}.
+    \item Deploy sản phẩm lên \textbf{AWS} (S3 + CloudFront + Elastic Beanstalk + RDS) phục vụ người dùng thực.
+\end{enumerate}
+
+\section{Phạm vi đề tài}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Trong phạm vi} & \textbf{Ngoài phạm vi} \\
+\hline
+Quản lý sự kiện (CRUD, recurring, color) & Chia sẻ lịch (shared calendar) \\
+Quản lý task (priority, scale, status) & Push notification \\
+AI đề xuất lịch cho task DEADLINE & Đồng bộ với Google Calendar API \\
+Xác thực JWT + Google OAuth2 & Quản lý nhóm/tổ chức \\
+Deploy AWS (production) & Mobile app (chỉ có web responsive) \\
+\hline
+\end{tabular}
+\caption{Phạm vi đề tài}
+\end{table}
+
+% ============================================================
+% CHƯƠNG 2: CÔNG NGHỆ SỬ DỤNG
+% ============================================================
+\chapter{Công nghệ và kiến trúc hệ thống}
+
+\section{Công nghệ sử dụng}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Tầng} & \textbf{Công nghệ} & \textbf{Vai trò} \\
+\hline
+\multirow{4}{*}{Frontend} & React 19 + TypeScript & UI framework \\
+ & Material UI (MUI) 7 & Component library \\
+ & Axios & HTTP client \\
+ & React Router DOM 7 & Client-side routing \\
+\hline
+\multirow{5}{*}{Backend} & Java 17 + Spring Boot 3.4 & Application framework \\
+ & Spring Security + JWT & Authentication \& authorization \\
+ & Spring Data JPA & ORM / database access \\
+ & Google Gemini SDK 1.0 & AI scheduling engine \\
+ & Gradle & Build tool \\
+\hline
+Database & MySQL & Relational database \\
+\hline
+\multirow{4}{*}{Infrastructure} & AWS S3 + CloudFront & Frontend hosting + CDN \\
+ & AWS Elastic Beanstalk & Backend deployment \\
+ & AWS RDS & Managed MySQL \\
+ & AWS Route 53 & DNS management \\
+\hline
+\end{tabular}
+\caption{Bảng tổng hợp công nghệ}
+\end{table}
+
+\section{Kiến trúc hệ thống}
+
+Hệ thống theo kiến trúc \textbf{Client--Server} với 3 tầng rõ ràng:
+
+\begin{center}
+\begin{tikzpicture}[
+    node distance=1.2cm and 2cm,
+    box/.style={draw, rounded corners, minimum width=3cm, minimum height=1cm, align=center, font=\small},
+    arr/.style={-{Stealth[length=3mm]}, thick},
+    >=Stealth
+]
+    % Frontend
+    \node[box, fill=blue!15] (react) {React + TypeScript\\(SPA)};
+    \node[box, fill=blue!15, right=2cm of react] (axios) {Axios\\HTTP Client};
+    
+    % Backend
+    \node[box, fill=green!15, below=1.8cm of react] (controller) {Spring\\Controller};
+    \node[box, fill=green!15, right=2cm of controller] (service) {Service\\Layer};
+    \node[box, fill=green!15, right=2cm of service] (repo) {JPA\\Repository};
+    
+    % External
+    \node[box, fill=orange!20, above=0.8cm of service] (gemini) {Google\\Gemini AI};
+    
+    % Database
+    \node[box, fill=yellow!20, below=1.5cm of service] (mysql) {MySQL\\Database};
+    
+    % Arrows
+    \draw[arr] (react) -- (axios);
+    \draw[arr] (axios) -- node[left, font=\footnotesize, align=center]{REST API\\(JSON + JWT)} (controller);
+    \draw[arr] (controller) -- (service);
+    \draw[arr] (service) -- (repo);
+    \draw[arr] (repo) -- (mysql);
+    \draw[arr, dashed, orange] (service) -- (gemini);
+    
+    % Layer labels
+    \begin{scope}[on background layer]
+        \node[draw, dashed, rounded corners, inner sep=10pt, fill=blue!8,
+              fit=(react)(axios), label={[font=\small\bfseries]above:Frontend (Client)}] {};
+        \node[draw, dashed, rounded corners, inner sep=10pt, fill=green!8,
+              fit=(controller)(service)(repo), label={[font=\small\bfseries]left:Backend}] {};
+    \end{scope}
+\end{tikzpicture}
+\end{center}
+
+\section{Kiến trúc backend (Package Structure)}
+
+Backend tuân theo mô hình phân tầng \textbf{Controller → Service → Repository → Entity} chuẩn Spring Boot:
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Package} & \textbf{Chức năng} \\
+\hline
+\texttt{com.leun.auth} & Xác thực (JWT, OAuth2, Security config) \\
+\texttt{com.leun.user} & Quản lý User, UserProfile, UserSetting \\
+\texttt{com.leun.event} & Quản lý sự kiện (Event entity, CRUD) \\
+\texttt{com.leun.task} & Quản lý công việc (Task, priority, status) \\
+\texttt{com.leun.calendar} & API truy vấn lịch theo ngày/tuần/tháng/năm \\
+\texttt{com.leun.ai} & AI Scheduling (Gemini integration, heuristics) \\
+\texttt{com.leun.exception} & Xử lý lỗi toàn cục \\
+\texttt{com.leun.health} & Health check endpoint \\
+\hline
+\end{tabular}
+\caption{Cấu trúc package backend}
+\end{table}
+
+% ============================================================
+% CHƯƠNG 3: THIẾT KẾ HỆ THỐNG
+% ============================================================
+\chapter{Thiết kế hệ thống}
+
+\section{Mô hình dữ liệu (Entity Relationship)}
+
+\begin{center}
+\begin{tikzpicture}[
+    entity/.style={draw, rectangle, rounded corners=3pt, minimum width=3.5cm, minimum height=1cm, align=center, font=\small\bfseries, fill=#1!20},
+    attr/.style={font=\footnotesize, align=left},
+    rel/.style={-{Stealth}, thick, font=\footnotesize},
+    >=Stealth
+]
+    % User
+    \node[entity=blue] (user) {User};
+    \node[attr, below=0.1cm of user] (uattr) {id, email, password\\provider, userRole};
+    
+    % UserProfile
+    \node[entity=cyan, right=4cm of user] (profile) {UserProfile};
+    \node[attr, below=0.1cm of profile] {name, image};
+    
+    % UserSetting
+    \node[entity=cyan, below right=2.5cm and 4cm of user] (setting) {UserSetting};
+    \node[attr, below=0.1cm of setting] {language, timezone\\aiScheduleDays, aiCustomRules};
+    
+    % Event
+    \node[entity=green, below left=3.5cm and 0cm of user] (event) {Event};
+    \node[attr, below=0.1cm of event] {title, startTime, endTime\\color, recurrenceType\\eventType, aiExplanation};
+    
+    % Task
+    \node[entity=orange, below right=3.5cm and -0.5cm of user] (task) {Task};
+    \node[attr, below=0.1cm of task] {title, dueDate, priority\\scale, status, taskType\\totalEffort, sessionDuration};
+    
+    % Relationships
+    \draw[rel] (user) -- node[above]{1:1} (profile);
+    \draw[rel] (user) -- node[right]{1:1} (setting);
+    \draw[rel] (user) -- node[left]{1:N} (event);
+    \draw[rel] (user) -- node[right]{1:N} (task);
+    \draw[rel, dashed, red] (event.east) -- node[below, font=\footnotesize, text=red]{N:1 (AI events)} (task.west);
+\end{tikzpicture}
+\end{center}
+
+Quan hệ đặc biệt: \textbf{Event → Task} (qua \texttt{sourceTask}) --- mỗi sự kiện do AI tạo sẽ liên kết ngược về task gốc, cho phép theo dõi tiến độ sessions.
+
+\section{REST API Design}
+
+Hệ thống cung cấp RESTful API với các nhóm endpoint chính:
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\footnotesize
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Nhóm} & \textbf{Method} & \textbf{Endpoint} & \textbf{Mô tả} \\
+\hline
+\multirow{2}{*}{Auth} & POST & /v1/auth/login & Đăng nhập email/password \\
+ & POST & /v1/auth/google/login & Đăng nhập Google OAuth2 \\
+\hline
+\multirow{2}{*}{User} & POST & /v1/user & Đăng ký tài khoản \\
+ & GET & /v1/user/profile & Lấy thông tin profile \\
+\hline
+\multirow{4}{*}{Event} & GET/POST & /v1/event & Lấy/Tạo sự kiện \\
+ & PUT/DELETE & /v1/event/\{id\} & Sửa/Xóa sự kiện \\
+\cline{2-4}
+Calendar & GET & /v1/calendar/\{unit\}/\{y\}/\{m\}/\{d\} & Lấy lịch theo view \\
+\hline
+\multirow{3}{*}{Task} & POST & /v1/task & Tạo task \\
+ & PUT & /v1/task/\{id\} & Cập nhật task \\
+ & PUT & /v1/task/\{id\}/completion & Toggle hoàn thành \\
+\hline
+\multirow{3}{*}{AI} & POST & /v1/ai/schedule/propose/\{taskId\} & AI đề xuất lịch \\
+ & POST & /v1/ai/schedule/accept-all & Chấp nhận tất cả đề xuất \\
+ & POST & /v1/ai/schedule/accept & Chấp nhận 1 đề xuất \\
+\hline
+\end{tabular}
+\caption{Các endpoint REST API chính}
+\end{table}
+
+\section{Luồng xác thực (Authentication Flow)}
+
+\begin{enumerate}[leftmargin=2cm]
+    \item Người dùng đăng nhập bằng \textbf{email/password} hoặc \textbf{Google OAuth2}.
+    \item Backend xác minh credentials, tạo \textbf{JWT token} (sử dụng thư viện JJWT, mã hoá HS256).
+    \item Frontend lưu JWT vào localStorage, gắn vào header \texttt{Authorization: Bearer <token>} cho mọi request qua Axios interceptor.
+    \item Backend có \texttt{JwtAuthenticationFilter} chạy trước mỗi request, giải mã và xác thực token.
+    \item Hệ thống hoàn toàn \textbf{stateless} --- không lưu session phía server.
+\end{enumerate}
+
+% ============================================================
+% CHƯƠNG 4: TÍNH NĂNG AI SCHEDULING
+% ============================================================
+\chapter{Tính năng AI Scheduling}
+
+Đây là tính năng cốt lõi và khác biệt của đề tài, sử dụng \textbf{Google Gemini AI} (Generative AI) để tự động đề xuất lịch học/làm việc cho sinh viên.
+
+\section{Luồng hoạt động}
+
+\begin{enumerate}[leftmargin=2cm]
+    \item Người dùng tạo task loại \textbf{DEADLINE} với các thuộc tính: tên, mô tả, deadline, mức ưu tiên (HIGH/MEDIUM/LOW), quy mô (QUICK/REGULAR/PROJECT), tổng thời gian cần thiết, thời lượng mỗi session.
+    \item Nhấn nút \textbf{``AI Schedule''} trên giao diện.
+    \item Backend thực hiện:
+    \begin{enumerate}[label=\alph*.]
+        \item Tải cài đặt người dùng (số ngày nhìn trước, custom rules).
+        \item Truy vấn tất cả events hiện có để tìm \textbf{khoảng thời gian trống} (8:00--23:00).
+        \item Tính toán số sessions cần đề xuất dựa trên deadline và effort còn lại.
+        \item Xây dựng \textbf{prompt tối ưu} gửi cho Gemini AI, bao gồm: thông tin task, danh sách slots trống (tối đa 25 slots để tiết kiệm token), custom rules.
+        \item Gemini AI trả về các đề xuất kèm lý do.
+        \item Nếu Gemini fail → \textbf{fallback sang heuristics} (scoring-based).
+    \end{enumerate}
+    \item Người dùng xem đề xuất (thời gian, điểm phù hợp, giải thích AI) và chọn chấp nhận.
+    \item Hệ thống tạo \texttt{AI\_GENERATED} events liên kết với task gốc.
+\end{enumerate}
+
+\section{Multi-model Fallback}
+
+Để đảm bảo tính sẵn sàng cao, \texttt{GeminiService} triển khai cơ chế fallback qua 4 models:
+
+\begin{center}
+\begin{tikzpicture}[
+    node distance=0.8cm,
+    box/.style={draw, rounded corners, minimum width=3.8cm, minimum height=0.8cm, align=center, font=\small, fill=#1!15},
+    arr/.style={-{Stealth}, thick},
+]
+    \node[box=green] (m1) {gemini-2.5-flash};
+    \node[box=blue, below=of m1] (m2) {gemini-2.5-flash-lite};
+    \node[box=cyan, below=of m2] (m3) {gemini-2.0-flash};
+    \node[box=orange, below=of m3] (m4) {gemma-3-27b-it};
+    \node[box=red, below=of m4] (heur) {Heuristics (fallback)};
+    
+    \draw[arr] (m1) -- node[right, font=\footnotesize]{429/error} (m2);
+    \draw[arr] (m2) -- node[right, font=\footnotesize]{429/error} (m3);
+    \draw[arr] (m3) -- node[right, font=\footnotesize]{429/error} (m4);
+    \draw[arr] (m4) -- node[right, font=\footnotesize]{all fail} (heur);
+    
+    \node[right=1.5cm of m1, font=\footnotesize, text=gray] {Cooldown 30s/model};
+\end{tikzpicture}
+\end{center}
+
+Mỗi model bị rate limit (HTTP 429) sẽ được đánh dấu cooldown 30 giây, hệ thống tự động chuyển sang model tiếp theo. Nếu tất cả 4 models đều fail, fallback về thuật toán \textbf{heuristics} hoàn toàn local (không cần API).
+
+\section{Heuristic Scoring Algorithm}
+
+Khi Gemini AI không khả dụng, hệ thống sử dụng thuật toán scoring để đánh giá và chọn slot tốt nhất:
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|c|l|}
+\hline
+\textbf{Khung giờ} & \textbf{Điểm} & \textbf{Lý do} \\
+\hline
+8:00 -- 11:30 & +30 & Buổi sáng --- tập trung cao nhất \\
+11:30 -- 13:30 & $-$10 & Giờ ăn trưa --- hiệu suất thấp \\
+13:30 -- 17:00 & +20 & Buổi chiều --- phù hợp làm việc \\
+17:00 -- 19:00 & $-$5 & Giờ ăn tối \\
+19:00 -- 21:00 & +10 & Tối sớm --- hiệu quả tự học \\
+21:00 -- 23:00 & $-$15 & Tối muộn --- ảnh hưởng sức khỏe \\
+Slot $\geq$ 90 phút & +10 & Ưu tiên phiên dài \\
+\hline
+\end{tabular}
+\caption{Bảng scoring cho heuristic scheduling}
+\end{table}
+
+Quy tắc bổ sung:
+\begin{itemize}[leftmargin=2cm]
+    \item Mỗi buổi (sáng/chiều/tối) chỉ tối đa \textbf{1 session}, trừ khi deadline $\leq$ 3 ngày (urgent).
+    \item Duration linh động: chia đều effort còn lại cho số sessions, làm tròn lên bội 15 phút, trong khoảng [30, 150] phút.
+    \item Slots được nhóm theo ngày + buổi, chọn slot dài nhất và điểm cao nhất trong mỗi buổi.
+\end{itemize}
+
+\section{Explainable AI}
+
+Mỗi sự kiện do AI tạo đều lưu trường \texttt{aiExplanation} --- giải thích bằng tiếng Việt tại sao AI chọn khung giờ đó. Ví dụ:
+
+\begin{mdframed}[backgroundcolor=blue!5, linecolor=blue!40]
+\textit{``Session 2: Buổi sáng --- thời điểm tập trung cao nhất. Thời lượng 90 phút.''}
+\end{mdframed}
+
+Điều này giúp người dùng hiểu quyết định của AI và tin tưởng hơn vào đề xuất.
+
+% ============================================================
+% CHƯƠNG 5: KẾT QUẢ ĐẠT ĐƯỢC
+% ============================================================
+\chapter{Kết quả đạt được}
+
+\section{Tổng quan chức năng}
+
+Hệ thống đã hoàn thành đầy đủ 13 nhóm chức năng chính theo mục tiêu đề ra, bao phủ cả quản lý lịch truyền thống lẫn tính năng AI nâng cao:
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|l|l|c|}
+\hline
+\textbf{STT} & \textbf{Chức năng} & \textbf{Chi tiết} & \textbf{Trạng thái} \\
+\hline
+1 & Đăng ký / Đăng nhập & Email + Google OAuth2 (popup flow) & \checkmark \\
+2 & Quản lý sự kiện & Tạo, sửa, xóa, xem chi tiết & \checkmark \\
+3 & Sự kiện lặp lại & 7 loại: daily, weekly, biweekly, & \checkmark \\
+  &                    & monthly, yearly, weekdays, none & \\
+4 & Mã màu sự kiện & 10 màu (Tomato đến Grape) & \checkmark \\
+5 & Quản lý task & Priority, scale, status, deadline & \checkmark \\
+6 & Chế độ xem lịch & Ngày, Tuần, Tháng, Năm & \checkmark \\
+7 & AI đề xuất lịch & Gemini AI + fallback heuristics & \checkmark \\
+8 & Explainable AI & Giải thích tiếng Việt cho mỗi đề xuất & \checkmark \\
+9 & Multi-model fallback & 4 models + cooldown 30s/model & \checkmark \\
+10 & Cài đặt cá nhân & Ngôn ngữ, timezone, AI rules & \checkmark \\
+11 & Dark/Light theme & Lưu preference vào localStorage & \checkmark \\
+12 & Mini calendar sidebar & Điều hướng nhanh theo ngày & \checkmark \\
+13 & Deploy production & AWS (S3, CloudFront, EB, RDS) & \checkmark \\
+\hline
+\end{tabular}
+\caption{Bảng tổng hợp chức năng đã hoàn thành}
+\end{table}
+
+\section{Chi tiết các nhóm chức năng}
+
+\subsection{Xác thực và phân quyền}
+
+Hệ thống hỗ trợ 2 phương thức đăng nhập:
+\begin{itemize}[leftmargin=2cm]
+    \item \textbf{Email/Password}: Mật khẩu được mã hóa bằng \texttt{BCryptPasswordEncoder}, xác thực qua Spring Security.
+    \item \textbf{Google OAuth2}: Sử dụng popup flow với thư viện \texttt{@react-oauth/google}, backend trao đổi authorization code lấy token qua \texttt{GoogleAuthorizationCodeTokenRequest} với \texttt{redirect\_uri = ``postmessage''}.
+\end{itemize}
+
+JWT token được tạo bằng thuật toán \textbf{HS256} (thư viện JJWT 0.11.5) với thời hạn \textbf{20 phút}. Frontend tự động gắn token vào mọi request qua Axios interceptor (\texttt{setupInterceptors.ts}), đồng thời xử lý redirect khi nhận HTTP 401.
+
+\subsection{Quản lý sự kiện}
+
+Mỗi sự kiện (Event) hỗ trợ đầy đủ các thuộc tính:
+\begin{itemize}[leftmargin=2cm]
+    \item Thông tin cơ bản: tiêu đề, mô tả, địa điểm, thời gian bắt đầu/kết thúc.
+    \item \textbf{10 mã màu}: Tomato, Light Pink, Tangerine, Banana, Sage, Basil, Peacock, Blueberry, Lavender, Grape --- mỗi màu có HEX code riêng.
+    \item \textbf{7 loại lặp lại}: NONE, DAILY, WEEKLY, BIWEEKLY, MONTHLY, YEARLY, WEEKDAYS --- với hỗ trợ \texttt{recurrenceCount} và \texttt{recurrenceEndDate}.
+    \item \textbf{3 loại sự kiện}: FIXED (cố định), USER\_CREATED (người dùng tạo), AI\_GENERATED (AI tạo --- liên kết ngược về task gốc qua \texttt{sourceTask}).
+\end{itemize}
+
+\subsection{Quản lý công việc (Task)}
+
+Task hỗ trợ quản lý chi tiết với hệ thống phân loại đa chiều:
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Thuộc tính} & \textbf{Giá trị} & \textbf{Mô tả} \\
+\hline
+\texttt{taskType} & SIMPLE, DEADLINE & Task đơn giản / có deadline \\
+\texttt{priority} & HIGH, MEDIUM, LOW & Mức ưu tiên \\
+\texttt{scale} & QUICK, REGULAR, PROJECT & Quy mô công việc \\
+\texttt{status} & PENDING, SCHEDULED, & Trạng thái tiến độ \\
+ & IN\_PROGRESS, COMPLETED & \\
+\hline
+\end{tabular}
+\caption{Phân loại thuộc tính Task}
+\end{table}
+
+Mỗi quy mô (scale) có giá trị mặc định hợp lý cho effort và session:
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Scale} & \textbf{Default Total Effort} & \textbf{Default Session Duration} \\
+\hline
+QUICK & 30 phút & 30 phút \\
+REGULAR & 120 phút (2 giờ) & 60 phút \\
+PROJECT & 600 phút (10 giờ) & 90 phút \\
+\hline
+\end{tabular}
+\caption{Giá trị mặc định cho Task Scale}
+\end{table}
+
+Task còn tự động tính toán các trường dẫn xuất thông qua các phương thức: số sessions cần thiết (\texttt{getRequiredSessions}), sessions còn lại chưa lên lịch (\texttt{getUnscheduledSessions}), effort còn lại (\texttt{getRemainingEffortMinutes}), và phần trăm tiến độ (\texttt{getProgressPercent}).
+
+\subsection{Chế độ xem lịch}
+
+Frontend cung cấp 4 chế độ xem lịch, mỗi chế độ có component riêng:
+
+\begin{itemize}[leftmargin=2cm]
+    \item \textbf{Ngày} (\texttt{CalendarByDay.tsx}): Hiển thị chi tiết từng giờ trong ngày, events xếp theo timeline.
+    \item \textbf{Tuần} (\texttt{CalendarByWeek.tsx}): Hiển thị 7 ngày với grid giờ, hỗ trợ kéo thả.
+    \item \textbf{Tháng} (\texttt{CalendarByMonth.tsx}): Hiển thị lưới 6 tuần × 7 ngày.
+    \item \textbf{Năm} (\texttt{CalendarByYear.tsx}): Hiển thị 12 tháng thu nhỏ trong 1 trang.
+\end{itemize}
+
+Header hỗ trợ điều hướng nhanh với các component: \texttt{CalendarViewSelector} (chuyển đổi chế độ xem), \texttt{DateShifter} (di chuyển ngày/tuần/tháng), \texttt{ResetToToday} (quay về ngày hiện tại), và \texttt{SettingsDropDown} (menu cài đặt).
+
+\subsection{Cài đặt cá nhân}
+
+Trang Settings cho phép người dùng tùy chỉnh trải nghiệm qua các endpoint PATCH riêng biệt:
+\begin{itemize}[leftmargin=2cm]
+    \item Cập nhật tên hiển thị (\texttt{PATCH /v1/user/profile/name})
+    \item Ngôn ngữ, quốc gia, múi giờ (\texttt{PATCH /v1/user/setting/\{field\}})
+    \item Số ngày AI nhìn trước (\texttt{aiScheduleDays}, mặc định 4 ngày)
+    \item Quy tắc tùy chỉnh cho AI (\texttt{aiCustomRules}) --- ví dụ: \textit{``Không xếp lịch học buổi tối thứ 7''}
+\end{itemize}
+
+\section{Thống kê mã nguồn}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Thành phần} & \textbf{Loại file} & \textbf{Số file} & \textbf{Công nghệ chính} \\
+\hline
+\multirow{2}{*}{Backend} & Java (.java) & 53 & Spring Boot 3.4.3, JPA \\
+ & Config (YAML, Gradle) & 5 & Gradle, application.yml \\
+\hline
+\multirow{3}{*}{Frontend} & React (.tsx) & 36 & React 19, TypeScript \\
+ & React (.jsx/.js) & 12 & JavaScript, AuthContext \\
+ & API \& Utils (.ts) & 11 & Axios, JWT decode \\
+\hline
+Stylesheet & CSS (.css) & 25 & Custom CSS \\
+\hline
+\multicolumn{2}{|l|}{\textbf{Tổng source files}} & \textbf{142} & \\
+\hline
+\end{tabular}
+\caption{Thống kê chi tiết mã nguồn}
+\end{table}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Chỉ số} & \textbf{Giá trị} \\
+\hline
+Tổng số API endpoints & $\sim$30 \\
+Số Entity classes & 5 (User, UserProfile, UserSetting, Event, Task) \\
+Số Enum types & 10 (Color, RecurrenceType, EventType, Priority, ...) \\
+Số Repository interfaces & 5 \\
+Số Controller classes & 8 \\
+Số Service classes & 9 \\
+Số frontend pages & 5 (Main, Settings, SignIn, SignUp, Error) \\
+Số frontend components & 38 (trong 8 thư mục con) \\
+File lớn nhất & AISchedulingService.java --- 1.159 dòng \\
+Frontend dependencies (npm) & 18 packages \\
+Backend dependencies (Gradle) & 16 packages \\
+\hline
+\end{tabular}
+\caption{Các chỉ số thống kê dự án}
+\end{table}
+
+\subsection{Cấu trúc Backend chi tiết}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|c|l|}
+\hline
+\textbf{Package} & \textbf{Số file} & \textbf{Các class chính} \\
+\hline
+\texttt{com.leun.ai} & 6 & AISchedulingController, AISchedulingService, \\
+ & & GeminiService, ScheduleProposal, TimeSlot \\
+\texttt{com.leun.auth} & 9 & AuthController, OAuthController, JwtUtil, \\
+ & & JwtAuthenticationFilter, SecurityConfiguration \\
+\texttt{com.leun.calendar} & 3 & CalendarController, CalendarService, CalendarDto \\
+\texttt{com.leun.event} & 6 & EventController, EventService, Event entity, \\
+ & & EventType, RecurrenceType, Color enums \\
+\texttt{com.leun.task} & 9 & TaskController, TaskService, Task entity, \\
+ & & Priority, TaskScale, TaskStatus, TaskType \\
+\texttt{com.leun.user} & 11 & UserController, UserService, 3 entities, \\
+ & & 3 repositories, 3 DTOs \\
+\texttt{com.leun.exception} & 4 & GlobalExceptionHandler, ErrorResponse \\
+\texttt{com.leun.health} & 1 & HealthController \\
+\hline
+\end{tabular}
+\caption{Chi tiết cấu trúc package backend}
+\end{table}
+
+\subsection{Cấu trúc Frontend chi tiết}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|c|l|}
+\hline
+\textbf{Thư mục} & \textbf{Số file} & \textbf{Components chính} \\
+\hline
+\texttt{components/ai/} & 4 & AIScheduleButton, AIScheduleModal, ProposalCard \\
+\texttt{components/auth/} & 8 & AuthContext, SignInForm, SignUpForm, OAuthButtons \\
+\texttt{components/calendar/content/} & 4 & CalendarByDay, ByWeek, ByMonth, ByYear \\
+\texttt{components/calendar/header/} & 5 & ViewSelector, DateShifter, ResetToToday \\
+\texttt{components/calendar/sidebar/} & 4 & CreateSchedule, MiniCalendar, EmailButton \\
+\texttt{components/layout/} & 4 & Content, Footer, Header, Sidebar \\
+\texttt{components/modal/event/} & 6 & EventModal, ColorDropDown, TimeDropDown \\
+\texttt{components/modal/task/} & 1 & TaskModal \\
+\texttt{components/modal/details/} & 2 & EventDetailsModal, TaskDetailsModal \\
+\texttt{api/} & 8 & apiClient, setupInterceptors, aiApi, authApi, ... \\
+\texttt{pages/} & 5 & Main, Settings, SignIn, SignUp, Error \\
+\hline
+\end{tabular}
+\caption{Chi tiết cấu trúc frontend}
+\end{table}
+
+\section{API Endpoints đầy đủ}
+
+Hệ thống cung cấp tổng cộng $\sim$30 RESTful API endpoints, phân nhóm theo chức năng:
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\footnotesize
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Nhóm} & \textbf{Method} & \textbf{Endpoint} & \textbf{Mô tả} \\
+\hline
+\multirow{2}{*}{Auth} & POST & /v1/auth/login & Đăng nhập email/password \\
+ & POST & /v1/auth/google/login & Đăng nhập Google OAuth2 \\
+\hline
+\multirow{7}{*}{User} & POST & /v1/user & Đăng ký tài khoản \\
+ & GET & /v1/user/profile & Lấy thông tin profile \\
+ & GET & /v1/user/setting & Lấy cài đặt \\
+ & PATCH & /v1/user/profile/name & Cập nhật tên \\
+ & PATCH & /v1/user/setting/language & Cập nhật ngôn ngữ \\
+ & PATCH & /v1/user/setting/timezone & Cập nhật timezone \\
+ & DELETE & /v1/user & Xóa tài khoản \\
+\hline
+\multirow{3}{*}{Calendar} & GET & /v1/calendar & Lấy lịch mặc định \\
+ & GET & /v1/calendar/\{unit\} & Lấy theo đơn vị \\
+ & GET & /v1/calendar/\{unit\}/\{y\}/\{m\}/\{d\} & Lấy theo ngày cụ thể \\
+\hline
+\multirow{4}{*}{Event} & GET & /v1/event/\{id\} & Chi tiết sự kiện \\
+ & POST & /v1/event & Tạo sự kiện \\
+ & PUT & /v1/event/\{id\} & Sửa sự kiện \\
+ & DELETE & /v1/event/\{id\} & Xóa sự kiện \\
+\hline
+\multirow{4}{*}{Task} & POST & /v1/task & Tạo task \\
+ & PUT & /v1/task/\{id\} & Cập nhật task \\
+ & DELETE & /v1/task/\{id\} & Xóa task \\
+ & PUT & /v1/task/\{id\}/completion & Toggle hoàn thành \\
+\hline
+\multirow{6}{*}{AI} & POST & /v1/ai/schedule/propose/\{taskId\} & AI đề xuất lịch \\
+ & POST & /v1/ai/schedule/accept-all & Chấp nhận tất cả \\
+ & POST & /v1/ai/schedule/accept & Chấp nhận 1 đề xuất \\
+ & POST & /v1/ai/task/\{taskId\}/complete & Hoàn thành task \\
+ & POST & /v1/ai/task/\{taskId\}/sync-sessions & Đồng bộ sessions \\
+ & GET & /v1/ai/pending-tasks & Danh sách task chờ \\
+\hline
+Health & GET & /health & Health check \\
+\hline
+\end{tabular}
+\caption{Danh sách đầy đủ các endpoint REST API}
+\end{table}
+
+\section{Kết quả triển khai (Deployment)}
+
+Hệ thống đã được triển khai thành công lên \textbf{AWS} với kiến trúc production-grade:
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Thành phần} & \textbf{Dịch vụ AWS} & \textbf{Chi tiết} \\
+\hline
+Frontend & S3 + CloudFront & React build tĩnh, phân phối CDN toàn cầu, \\
+ & & HTTPS với custom domain \\
+\hline
+Backend & Elastic Beanstalk & Spring Boot JAR, hỗ trợ auto-scaling, \\
+ & & cổng 5000, health check \\
+\hline
+Database & RDS (MySQL) & Managed instance, automated backup \\
+\hline
+DNS & Route 53 & Custom domain \texttt{calendar.io.kr} \\
+\hline
+\end{tabular}
+\caption{Kiến trúc deployment trên AWS}
+\end{table}
+
+\begin{itemize}[leftmargin=2cm]
+    \item \textbf{Website}: Hoạt động tại \url{https://calendar.io.kr}
+    \item \textbf{HTTPS}: Kết nối bảo mật qua CloudFront SSL certificate.
+    \item \textbf{CORS}: Cấu hình cho phép frontend gọi API cross-origin với các methods GET/POST/PUT/DELETE/OPTIONS.
+    \item \textbf{Environment variables}: Các thông tin nhạy cảm (JWT secret, Gemini API key, database credentials) được quản lý qua biến môi trường, không hard-code trong source.
+\end{itemize}
+
+\section{Đánh giá}
+
+\subsection{Ưu điểm}
+\begin{itemize}[leftmargin=2cm]
+    \item \textbf{Kiến trúc phân tầng rõ ràng}: 8 packages backend tuân thủ nghiêm ngặt mô hình Controller → Service → Repository → Entity, mỗi package chịu trách nhiệm 1 domain cụ thể.
+    \item \textbf{AI Scheduling là điểm khác biệt cốt lõi}: Không chỉ ghi nhận sự kiện thụ động mà chủ động đề xuất lịch trình dựa trên phân tích khoảng trống, ưu tiên, và deadline --- tính năng mà hầu hết ứng dụng lịch phổ biến chưa có.
+    \item \textbf{Cơ chế fallback đa tầng}: Multi-model fallback qua 4 Gemini models với cooldown 30s, kết hợp heuristic scoring khi tất cả models fail --- đảm bảo hệ thống \textit{không bao giờ} trả về lỗi cho người dùng.
+    \item \textbf{Explainable AI}: Mỗi đề xuất kèm giải thích tiếng Việt (lưu trong \texttt{aiExplanation}, tối đa 1.000 ký tự), giúp người dùng hiểu và tin tưởng quyết định của AI.
+    \item \textbf{Token-optimized prompting}: Prompt gửi cho Gemini được tối ưu format (mã viết tắt, giới hạn 25 slots, nhóm events lặp) để tiết kiệm token API và giảm chi phí.
+    \item \textbf{Production-ready}: Đã deploy lên AWS với HTTPS, custom domain, managed database, và auto-scaling --- không chỉ là prototype.
+    \item \textbf{Bảo mật đầy đủ}: JWT stateless, BCrypt password hashing, Spring Security filter chain, CORS configuration, environment variables cho secrets.
+\end{itemize}
+
+\subsection{Hạn chế}
+\begin{itemize}[leftmargin=2cm]
+    \item Chưa hỗ trợ \textbf{chia sẻ lịch} (shared calendar) giữa nhiều người dùng và \textbf{push notification} nhắc nhở sự kiện.
+    \item Giao diện \textbf{mobile responsive} chưa hoàn thiện --- ưu tiên trải nghiệm desktop.
+    \item AI phụ thuộc vào \textbf{Google Gemini API} (cần API key, giới hạn free tier) --- mặc dù đã có fallback heuristics nhưng chất lượng đề xuất sẽ giảm khi không có AI.
+    \item Chưa có \textbf{unit test} và \textbf{integration test} tự động cho backend (hiện test thủ công qua Postman).
+    \item JWT token hết hạn sau \textbf{20 phút} chưa có cơ chế \textbf{refresh token} --- người dùng phải đăng nhập lại khi token expire.
+\end{itemize}
+
+% ============================================================
+% CHƯƠNG 6: KẾT LUẬN
+% ============================================================
+\chapter{Kết luận và hướng phát triển}
+
+\section{Kết luận}
+
+Đề tài đã hoàn thành việc xây dựng ứng dụng \textbf{Calendar} --- một nền tảng quản lý lịch cá nhân full-stack với tính năng AI Scheduling sử dụng Google Gemini. Cụ thể, các mục tiêu đã đạt được bao gồm:
+
+\begin{itemize}[leftmargin=2cm]
+    \item \textbf{Phương pháp}: Áp dụng kiến trúc Client--Server hiện đại (React + Spring Boot), thiết kế RESTful API, sử dụng JWT cho xác thực stateless, và tích hợp Generative AI (Google Gemini) với cơ chế multi-model fallback.
+    \item \textbf{Kết quả}: Sản phẩm hoạt động đầy đủ với 13 chức năng chính, đã deploy production trên AWS, có thể truy cập tại \url{https://calendar.io.kr}.
+    \item \textbf{Đóng góp}: Chứng minh tính khả thi của việc ứng dụng AI sinh tạo vào bài toán quản lý thời gian cá nhân, đặc biệt phù hợp với đối tượng sinh viên.
+\end{itemize}
+
+\section{Hướng phát triển}
+
+\begin{enumerate}[leftmargin=2cm]
+    \item \textbf{Shared Calendar}: Cho phép chia sẻ lịch giữa các thành viên trong nhóm.
+    \item \textbf{Push Notification}: Nhắc nhở trước sự kiện qua email hoặc browser notification.
+    \item \textbf{Đồng bộ Google Calendar}: Import/export sự kiện với Google Calendar API.
+    \item \textbf{Mobile App}: Phát triển ứng dụng mobile bằng React Native.
+    \item \textbf{AI nâng cao}: Tích hợp mô hình học từ hành vi người dùng (preference learning) để đề xuất chính xác hơn theo thời gian.
+    \item \textbf{Testing}: Bổ sung unit test và integration test cho backend.
+\end{enumerate}
+
+% ============================================================
+\label{LastPage}
+\end{document}
