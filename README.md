@@ -124,18 +124,18 @@ CREATE DATABASE calendar_app;
 - Clone repository và di chuyển vào thư mục backend.
 
 - Cấu hình file src/main/resources/application.properties:
-# Database Config
+#### Database Config
 spring.datasource.url=jdbc:mysql://localhost:3306/calendar_app
 spring.datasource.username=YOUR_DB_USERNAME
 spring.datasource.password=YOUR_DB_PASSWORD
 
-# JWT Secret
+#### JWT Secret
 application.security.jwt.secret-key=YOUR_VERY_LONG_SECRET_KEY
 
-# Google Gemini AI
+#### Google Gemini AI
 gemini.api.key=YOUR_GEMINI_API_KEY
 
-# Google OAuth2
+#### Google OAuth2
 spring.security.oauth2.client.registration.google.client-id=YOUR_GOOGLE_CLIENT_ID
 spring.security.oauth2.client.registration.google.client-secret=YOUR_GOOGLE_CLIENT_SECRET
 
